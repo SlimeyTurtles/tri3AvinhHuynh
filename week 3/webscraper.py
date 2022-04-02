@@ -9,5 +9,6 @@ ratelist = soup.findAll("table", {"class": "ratesTable"})[0].findAll("tbody") # 
 
 for i in ratelist:
     trList = i.findAll('tr') # tr is the thing before the text in the html file, .findall finds all instances, tr is table row
+    print("Currency Exchanges for each Dollar")
     for j in trList[:10]: # prints the 10 table contents
         print(j.text)
