@@ -67,7 +67,7 @@ def recur_factorial(n):
 ## hack 2b: def while_loop(0)
 ## hack 2c : def recursive_loop(0)
 
-def tester1():
+def driver():
     print("For loop")
     for_loop()
     print("While loop")
@@ -76,12 +76,10 @@ def tester1():
     recursive_loop(0)  # requires initial index to start recursion
 
 # this is test driver or code that plays when executed directly, versus import which will not run these statements
-def tester2():
+def driver2():
     num = int(input("Enter a number for factorial: "))
     # check if the number is negative
     if num < 0:
         print("Sorry, factorial does not exist for negative numbers")
     else:
         print("The factorial of", num, "is", recur_factorial(num))
-
-tester2()

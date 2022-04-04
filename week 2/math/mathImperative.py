@@ -75,3 +75,4 @@ def primes():
     minimum = int(input(" Enter the Minimum Value for Primes: "))
     maximum = int(input(" Enter the Maximum Value for Primes: "))
     findprimes(minimum, maximum)
+    

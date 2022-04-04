@@ -11,6 +11,8 @@ from pattern import ship2
 # Two styles are supported to execute abstracted logic
 # 1. file names will be run by exec(open("filename.py").read())
 # 2. function references will be executed directly file.function()
+import subprocess
+import os
 
 main_menu = [
     ["Swap", "swap.py"],
@@ -95,6 +97,9 @@ def buildMenu(banner, options):
         # traps all other errors
         print(f"Invalid choice: {choice}")
     # end validation try
+
+    input("press enter to clear")
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     buildMenu(banner, options)  # recursion, start menu over again
 

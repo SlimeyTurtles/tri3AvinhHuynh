@@ -31,4 +31,4 @@ class Palindrome:
 
 
 pal = Palindrome()
-pal("tvfcdrtvfybghujimkol.p")
+pal("")
