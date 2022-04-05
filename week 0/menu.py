@@ -1,103 +1,84 @@
-# menuy.py - function style menu
-# Imports typically listed at top
-# each import enables us to use logic that has been abstracted to other files and folders
+class Menu:
+    def __init__(self):
+        border = "=" * 25
+        self.banner = f"\n{border}\nPlease Select An Option\n{border}"
 
-import matrix
-import tree
-import swap
-from pattern import ship2
+        self.main_menu = [
+            ["Week 0", "self.buildMenu('Week 0 ' + self.banner, self.week0)"],
+            ["Week 1", "self.buildMenu('Week 1 ' + self.banner, self.week1)"],
+            ["Week 2", "self.buildMenu('Week 2 ' + self.banner, self.week2)"],
+        ]
+        self.week0 = [
+            ["Swap", "swap.py"],
+            ["Matrix", "matrix.py"],
+            ["Tree", "tree.py"],
+            ["Ships Sub-Menu", "self.buildMenu('Ships Sub-Menu ' + self.banner, self.ship_submenu)"]
+        ]
+        self.ship_submenu = [
+            ["Unoptimized ship", "pattern/ship1.py"],
+            ["Optimized ship", "pattern/ship2.py"]
+        ]
+        self.week1 = [
+            ["Loops Tester", ""]
+        ]
+        self.week2 = [
+            []
+        ]
 
-# Main list of [Prompts, Actions]
-# Two styles are supported to execute abstracted logic
-# 1. file names will be run by exec(open("filename.py").read())
-# 2. function references will be executed directly file.function()
+    def __call__(self):
+        self.buildMenu("Main Menu " + self.banner, self.main_menu)
 
-main_menu = [
-    ["Swap", "swap.py"],
-    ["Matrix", "matrix.py"],
-    ["Tree", "tree.py"],
-]
+    def buildMenu(self, banner, options):
+        print()
+        print(banner)
 
-# Submenu list of [Prompt, Action]
-# Works similarly to main_menu
-patterns_sub_menu = [
-    ["Unoptimized ship", "pattern/ship1.py"],
-    ["Optimized ship", ship2.ship]
-]
+        # build a dictionary from options
+        prompts = {0: ["Exit", None]}
+        for op in options:
+            index = len(prompts)
+            prompts[index] = op
 
-# Menu banner is typically defined by menu owner
-border = "=" * 25
-banner = f"\n{border}\nPlease Select An Option\n{border}"
+        # print menu or dictionary
+        for key, value in prompts.items():
+            print(key, '->', value[0])
 
-# def menu
-# using main_menu list:
-# 1. main menu and submenu reference are created [Prompts, Actions]
-# 2. menu_list is sent as parameter to menuy.menu function that has logic for menu control
-def menu():
-    title = "Function Menu" + banner
-    menu_list = main_menu.copy()
-    menu_list.append(["Patterns", patterns_submenu])
-    buildMenu(title, menu_list)
+        # get user choice
+        choice = input("Type your choice: ")
+        print()
 
-# def submenu
-# using sub menu list above:
-# sub_menu works similarly to menu()
-
-def patterns_submenu():
-    title = "Function Submenu" + banner
-    buildMenu(title, patterns_sub_menu)
-
-def buildMenu(banner, options):
-    # blank line before the menu
-    print()
-
-    # header for menu
-    print(banner)
-    # build a dictionary from options
-    prompts = {0: ["Exit", None]}
-    for op in options:
-        index = len(prompts)
-        prompts[index] = op
-
-    # print menu or dictionary
-    for key, value in prompts.items():
-        print(key, '->', value[0])
-
-    # get user choice
-    choice = input("Type your choice> ")
-
-    # blank line after the menu
-    print()
-
-    # validate choice and run
-    # execute selection
-    # convert to number
-    try:
-        choice = int(choice)
-        if choice == 0:
-            # stop
-            return
         try:
-            # try as function
-            action = prompts.get(choice)[1]
-            action()
-        except TypeError:
-            try:  # try as playground style
-                exec(open(action).read())
-            except FileNotFoundError:
-                print(f"File not found!: {action}")
-            # end function try
-        # end prompts try
-    except ValueError:
-        # not a number error
-        print(f"Not a number: {choice}")
-    except UnboundLocalError:
-        # traps all other errors
-        print(f"Invalid choice: {choice}")
-    # end validation try
+            choice = int(choice)
+            if choice == 0:
+                # stop
+                return
+            try:
+                eval(prompts.get(choice)[1])
+            except:
+                try:
+                    # try as function
+                    action = prompts.get(choice)[1]
+                    action()
+                except TypeError:
+                    try:  # try as playground style
+                        exec(open(action).read())
+                    except FileNotFoundError:
+                        print(f"File not found!: {action}")
+                    # end function try
+                # end prompts try
+                input("Press Enter to Clear")
+        except ValueError:
+            # not a number error
+            print(f"Not a number: {choice}")
+            input("Press Enter to Clear")
+        except UnboundLocalError:
+            # traps all other errors
+            print(f"Invalid choice: {choice}")
+            input("Press Enter to Clear")
+        # end validation try
 
-    buildMenu(banner, options)  # recursion, start menu over again
+        self.buildMenu(banner, options)  # recursion, start menu over again
 
 
 if __name__ == "__main__":
+    menu = Menu()
     menu()
