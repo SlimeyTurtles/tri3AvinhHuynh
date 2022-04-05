@@ -15,5 +15,18 @@ if __name__ == "__main__":
 
     input = 5
 
-    print("input: " + str(input))
-    print(Fact(int(input)))
+    print()
+    print("Input: " + str(input))
+    print("Factorial: " + str(Fact(int(input))))
+
+    input = 6
+
+    print()
+    print("Input: " + str(input))
+    print("Factorial: " + str(Fact(int(input))))
+
+    input = 11
+
+    print()
+    print("Input: " + str(input))
+    print("Factorial: " + str(Fact(int(input))))

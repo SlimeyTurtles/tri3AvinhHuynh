@@ -29,8 +29,9 @@ def ship_print(position):
 
 
 # ship function, iterface into this file
-def ship():
+def ship2():
     # only need to print ocean once
+    print("finoaenfea")
     ocean_print()
 
     # loop control variables
@@ -42,3 +43,7 @@ def ship():
     for position in range(start, distance, step):
         ship_print(position)  # call to function with parameter
         time.sleep(.1)
+
+if __name__ == "__main__":
+    print("Optimized Ship")
+    ship2()

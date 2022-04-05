@@ -1,3 +1,12 @@
+import os
+from week0.pattern.ship2 import ship2
+from week1.carlist import listsandloops
+from week1.carlist import recursiveFactorialDriver
+from week1.recursiveFibonacci import recursiveFibonacciDriver
+from week2.math.mathImperative import lcm
+from week2.math.lcmClass import lcmClassDriver
+from week2.palindromeClass import palindromeClassDriver
+
 class Menu:
     def __init__(self):
         border = "=" * 25
@@ -9,20 +18,25 @@ class Menu:
             ["Week 2", "self.buildMenu('Week 2 ' + self.banner, self.week2)"],
         ]
         self.week0 = [
-            ["Swap", "swap.py"],
-            ["Matrix", "matrix.py"],
-            ["Tree", "tree.py"],
+            ["Swap", "week0/swap.py"],
+            ["Matrix", "week0/matrix.py"],
+            ["Tree", "week0/tree.py"],
             ["Ships Sub-Menu", "self.buildMenu('Ships Sub-Menu ' + self.banner, self.ship_submenu)"]
         ]
         self.ship_submenu = [
-            ["Unoptimized ship", "pattern/ship1.py"],
-            ["Optimized ship", "pattern/ship2.py"]
+            ["Unoptimized ship", "week0/pattern/ship1.py"],
+            ["Optimized ship", ship2]
         ]
         self.week1 = [
-            ["Loops Tester", ""]
+            ["Loops Tester", listsandloops],
+            ["Recursive Factorial", recursiveFactorialDriver],
+            ["Recursive Fibonacci", recursiveFibonacciDriver]
         ]
         self.week2 = [
-            []
+            ["Factorial Class", "week2/factorialClass.py"],
+            ["Least Common Multiplier Imperative", lcm()],
+            ["Least Common Multiplier Class", lcmClassDriver()],
+            ["Palindrome Class", palindromeClassDriver()],
         ]
 
     def __call__(self):
@@ -66,14 +80,17 @@ class Menu:
                     # end function try
                 # end prompts try
                 input("Press Enter to Clear")
+                os.system("cls")
         except ValueError:
             # not a number error
             print(f"Not a number: {choice}")
             input("Press Enter to Clear")
+            os.system("cls")
         except UnboundLocalError:
             # traps all other errors
             print(f"Invalid choice: {choice}")
             input("Press Enter to Clear")
+            os.system("cls")
         # end validation try
 
         self.buildMenu(banner, options)  # recursion, start menu over again

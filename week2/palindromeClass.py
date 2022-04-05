@@ -4,7 +4,7 @@ class Palindrome:
     def __init__(self):
         self.index = 0
         self.input = ""
-        self.cleanList = [" ", "-", ",", "!", "?", "."]
+        self.cleanList = [" ", "-", ",", "!", "?", ".", "_"]
 
     def clean(self):
         self.input = self.input.lower()
@@ -16,7 +16,7 @@ class Palindrome:
         self.input = input
         self.clean()
 
-        index = math.floor(len(self.input)/2)
+        index = math.ceil(len(self.input)/2)
         palindrome = True
 
         for i in range(index):
@@ -31,4 +31,14 @@ class Palindrome:
 
 
 pal = Palindrome()
-pal("")
+
+
+def palindromeClassDriver():
+    print("Palindrome Class")
+    print()
+
+    tests = ["A man, a plan, a canal -- Panama!", "jeaaj", "---__!! aaa  ."]
+    for test in tests:
+        print("Input: " + test)
+        pal(test)
+        print()

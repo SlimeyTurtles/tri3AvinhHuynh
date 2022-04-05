@@ -15,9 +15,13 @@ class recursiveFibonacci():
             self.i += 1
             rec(index)
 
-if __name__ == "__main__":
+rec = recursiveFibonacci()
+
+def recursiveFibonacciDriver():
     print("Recursive Fibonacci")
-    rec = recursiveFibonacci()
     index = 6
     print("Index: " + str(index))
     rec(index)
+
+if __name__ == "__main__":
+    recursiveFibonacciDriver()

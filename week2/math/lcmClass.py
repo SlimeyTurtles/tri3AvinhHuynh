@@ -26,6 +26,3 @@ def lcmClassDriver():
     print()
 
 
-if __name__ == "__main__":
-    print("Least Common Multiplier Class")
-    lcmClassDriver()
