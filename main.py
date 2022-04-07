@@ -1,4 +1,5 @@
 import os
+import subprocess
 from week0.pattern.ship2 import ship2
 from week1.carlist import listsandloops
 from week1.carlist import recursiveFactorialDriver
@@ -6,6 +7,12 @@ from week1.recursiveFibonacci import recursiveFibonacciDriver
 from week2.math.mathImperative import lcm
 from week2.math.lcmClass import lcmClassDriver
 from week2.palindromeClass import palindromeClassDriver
+
+ANSI_CLEAR_SCREEN = u"\u001B[2J"
+ANSI_HOME_CURSOR = u"\u001B[0;0H\u001B[2"
+
+def clear():
+  subprocess.call("clear", shell=True)
 
 class Menu:
     def __init__(self):
@@ -43,7 +50,7 @@ class Menu:
         self.buildMenu("Main Menu " + self.banner, self.main_menu)
 
     def buildMenu(self, banner, options):
-        print()
+        clear()
         print(banner)
 
         # build a dictionary from options
@@ -80,19 +87,18 @@ class Menu:
                     # end function try
                 # end prompts try
                 input("Press Enter to Clear")
-                os.system("cls")
+                clear()
         except ValueError:
             # not a number error
             print(f"Not a number: {choice}")
             input("Press Enter to Clear")
-            os.system("cls")
+            clear()
         except UnboundLocalError:
             # traps all other errors
             print(f"Invalid choice: {choice}")
             input("Press Enter to Clear")
-            os.system("cls")
+            clear()
         # end validation try
-
         self.buildMenu(banner, options)  # recursion, start menu over again
 
 
