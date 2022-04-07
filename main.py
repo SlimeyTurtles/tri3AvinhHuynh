@@ -34,9 +34,9 @@ class Menu:
         ]
         self.week2 = [
             ["Factorial Class", "week2/factorialClass.py"],
-            ["Least Common Multiplier Imperative", lcm()],
-            ["Least Common Multiplier Class", lcmClassDriver()],
-            ["Palindrome Class", palindromeClassDriver()],
+            ["Least Common Multiplier Imperative", lcm],
+            ["Least Common Multiplier Class", lcmClassDriver],
+            ["Palindrome Class", palindromeClassDriver],
         ]
 
     def __call__(self):

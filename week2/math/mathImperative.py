@@ -51,6 +51,7 @@ def findlcm(a, b):
 
 
 def lcm():
+    print("Least Common Multiplier")
     a = int(input(" Enter the First Value for LCM: "))
     b = int(input(" Enter the Second Value for LCM: "))
     lcm = findlcm(a, b)
@@ -75,4 +76,6 @@ def primes():
     minimum = int(input(" Enter the Minimum Value for Primes: "))
     maximum = int(input(" Enter the Maximum Value for Primes: "))
     findprimes(minimum, maximum)
-    
+
+if __name__ == "__main__":
+    lcm()
