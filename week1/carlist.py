@@ -29,6 +29,14 @@ InfoDb.append({
     "Shoes": ["Way too many"]
 })
 
+InfoDb.append({
+    "FirstName": "Anthony",
+    "LastName": "Huynh",
+    "DOB": "April 5",
+    "Residence": "Escondido",
+    "Email": "anthony.p.huynh@gmail.com",
+    "Shoes": ["the fancy ones", "the not fancy ones"]
+})
 
 # given an index this will print InfoDb content
 def print_data(n):
