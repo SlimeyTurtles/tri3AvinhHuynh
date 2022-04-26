@@ -20,4 +20,4 @@ if __name__ == "__main__":
     input = 6
 
     print("input: " + str(input))
-    print(fibo_of(input)) # object running __call__ method
+    print("output: " + str(fibo_of(input))) # object running __call__ method
